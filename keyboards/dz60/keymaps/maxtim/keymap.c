@@ -24,7 +24,7 @@ enum custom_keycodes {
   Traffic_Liner,
   NEW1111,
   NEW1001,
-  NEW1069,
+  NEW0101,
   NEW1079,
   NEW9999,    //save in Adobe Import folder as NEW9999.wav
   SCRSHT,     //take screenshot and pastes into mspaint
@@ -43,7 +43,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 * |-----------------------------------------------------------------------------------------+
 * |   LShift  |  Z  |  X  |  C  |  V  |  B  |  N  |  M  |  ,  |  .  |  /  |      RShift     |
 * |-----------------------------------------------------------------------------------------+
-* | Ctrl | Super |  Alt  |              Space                | Fn2 | Super | Fn1  |  RCtrl  |
+* | Ctrl | Super |  Alt  |              Space                 | Fn2 | Menu | Fn1  |  RCtrl  |
 * `-----------------------------------------------------------------------------------------'
 * ```
 */
@@ -53,7 +53,7 @@ LAYOUT(
   KC_TAB,     KC_Q,    KC_W,    KC_E,   KC_R,   KC_T,     KC_Y,   KC_U,     KC_I,     KC_O,     KC_P,     KC_LBRC,  KC_RBRC,  KC_BSLS,
   TT(1),      KC_A,    KC_S,    KC_D,   KC_F,   KC_G,     KC_H,   KC_J,     KC_K,     KC_L,     KC_SCLN,  KC_QUOT,  KC_ENT,
   KC_LSFT,    XXXXXXX, KC_Z,    KC_X,   KC_C,   KC_V,     KC_B,   KC_N,     KC_M,     KC_COMM,  KC_DOT,   KC_SLSH,  KC_LSFT,  XXXXXXX,
-  KC_LCTL,    KC_LGUI, KC_LALT, KC_SPC, KC_SPC, KC_SPC,   MO(2),  KC_RGUI,  XXXXXXX,  MO(1),    KC_LCTL),
+  KC_LCTL,    KC_LGUI, KC_LALT, KC_SPC, KC_SPC, KC_SPC,   MO(2),  KC_APP,  XXXXXXX,  MO(1),    KC_LCTL),
 
 /*
 * ### 1 (_FL) Layer
@@ -75,7 +75,7 @@ LAYOUT(
 
 LAYOUT(
   TO(0),    KC_F1,    KC_F2,    KC_F3,    KC_F4,    KC_F5,    KC_F6,    KC_F7,    KC_F8,    KC_F9,    KC_F10,   KC_F11,   KC_F12,   _______,  KC_DEL,
-  _______,  KC_DEL,   KC_UP,    KC_HOME,  KC_END,   _______,  _______,  _______,  KC_MPLY,  KC_MSTP,  KC_MPRV,  KC_MNXT,  KC_VOLU,  SCRSHT,
+  _______,  KC_DEL,   KC_UP,    KC_HOME,  KC_END,   _______,  _______,  _______,  KC_MPLY,  KC_MSTP,  KC_MPRV,  KC_MNXT,  KC_VOLU,  KC_PSCR,
   _______,  KC_LEFT,  KC_DOWN,  KC_RGHT,  _______,  _______,  _______,  _______,  KC_UP,    KC_UP,    _______,  KC_VOLD,  _______,
   _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  KC_LEFT,  KC_DOWN,  KC_RIGHT, _______,  KC_CAPS,  _______,
   _______,  _______,  _______,  _______,  _______,  _______,  TT(3),    _______,  _______,  _______,  _______),
@@ -128,7 +128,7 @@ LAYOUT(
   TO(0),  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,
   _______,  M_1,      M_2,      M_3,      M_4,      M_5,      _______,  _______,  _______,  _______,  CtrlP,    _______,  _______,  _______,
   _______,  M_6,      M_7,      M_8,      M_9,      M_0,      _______,  _______,  _______,  _______,  _______,  _______,  _______,
-  _______,  _______,  M_A,      M_B,      M_C,      M_D,      _______,  NEW1111,  NEW1069,  NEW1079,  NEW1001,  NEW9999,  Traffic_Liner,  _______,
+  _______,  _______,  M_A,      M_B,      M_C,      M_D,      _______,  NEW1111,  NEW0101,  NEW1079,  NEW1001,  NEW9999,  Traffic_Liner,  _______,
   _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______),
 };
 
@@ -173,7 +173,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 SEND_STRING("Rewind 1079");
                 return false;
             case M_C:
-                SEND_STRING("BOB 1069");
+                SEND_STRING("News on the 9s"SS_TAP(X_TAB)"George Sink Injury Lawyers");
                 return false;
             case M_D:
                 SEND_STRING(SS_TAP(X_TAB)SS_TAP(X_TAB)SS_TAP(X_TAB)SS_TAP(X_TAB)SS_TAP(X_TAB)"SEC"SS_TAP(X_TAB)SS_TAP(X_TAB)SS_TAP(X_TAB)SS_TAP(X_TAB)SS_TAP(X_TAB)SS_TAP(X_TAB)SS_TAP(X_SPACE)SS_TAP(X_TAB)SS_TAP(X_ENTER)SS_TAP(X_ENTER));
@@ -182,7 +182,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 SEND_STRING(SS_LCTRL("p")SS_TAP(X_TAB)SS_TAP(X_TAB)SS_TAP(X_TAB)SS_TAP(X_TAB)SS_TAP(X_TAB)SS_TAP(X_TAB)SS_TAP(X_TAB)SS_TAP(X_SPACE)SS_TAP(X_TAB)SS_TAP(X_TAB)SS_TAP(X_TAB)SS_TAP(X_TAB)SS_TAP(X_TAB)SS_TAP(X_TAB));
                 return false;
             case Traffic_Liner:
-                SEND_STRING(SS_LCTRL("p")SS_TAP(X_TAB)SS_TAP(X_TAB)SS_TAP(X_TAB)SS_TAP(X_TAB)SS_TAP(X_TAB)SS_TAP(X_TAB)SS_TAP(X_TAB)SS_TAP(X_SPACE)SS_TAP(X_TAB)SS_TAP(X_TAB)SS_TAP(X_TAB)SS_TAP(X_TAB)SS_TAP(X_TAB)SS_TAP(X_TAB)"Traffic Tracker Hotline"SS_TAP(X_TAB)"855-350-7623");
+                SEND_STRING(SS_LCTRL("p")SS_TAP(X_TAB)SS_TAP(X_TAB)SS_TAP(X_TAB)SS_TAP(X_TAB)SS_TAP(X_TAB)SS_TAP(X_TAB)SS_TAP(X_TAB)SS_TAP(X_SPACE)SS_TAP(X_TAB)SS_TAP(X_TAB)SS_TAP(X_TAB)SS_TAP(X_TAB)SS_TAP(X_TAB)SS_TAP(X_TAB)"George Sink Traffic Tracker Hotline"SS_TAP(X_TAB)"833-900-7623");
                 return false;
             case NEW1001:
                 SEND_STRING(SS_LCTRL(SS_LSFT("s")));
@@ -199,10 +199,10 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 _delay_ms(500);
                 SEND_STRING(SS_TAP(X_TAB)SS_TAP(X_TAB)SS_TAP(X_TAB)SS_TAP(X_TAB)SS_TAP(X_TAB)"I:\\Adobe\\NEW1079"SS_TAP(X_ENTER));
                 return false;
-            case NEW1069:
+            case NEW0101:
                 SEND_STRING(SS_LCTRL(SS_LSFT("s")));
                 _delay_ms(500);
-                SEND_STRING(SS_TAP(X_TAB)SS_TAP(X_TAB)SS_TAP(X_TAB)SS_TAP(X_TAB)SS_TAP(X_TAB)"I:\\Adobe\\NEW1069"SS_TAP(X_ENTER));
+                SEND_STRING(SS_TAP(X_TAB)SS_TAP(X_TAB)SS_TAP(X_TAB)SS_TAP(X_TAB)SS_TAP(X_TAB)"I:\\Adobe\\NEW0101"SS_TAP(X_ENTER));
                 return false;
             case NEW9999:
                 SEND_STRING(SS_LCTRL(SS_LSFT("s")));
